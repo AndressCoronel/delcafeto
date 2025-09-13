@@ -230,9 +230,13 @@ body.nav-open .hamburger::after {
 
 .hero-actions {
     display: flex;
+    justify-content: center; /* Centra los botones horizontalmente */
     gap: 1.5rem;
     opacity: 0;
     transform: translateY(20px);
+    /* Nuevas propiedades para evitar que se apilen prematuramente */
+    flex-wrap: nowrap; /* Evita que los ítems se envuelvan a la siguiente línea */
+    max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
 }
 
 /* Botones CTA */
@@ -249,6 +253,8 @@ body.nav-open .hamburger::after {
     position: relative;
     overflow: hidden;
     z-index: 1;
+    white-space: nowrap; /* Evita que el texto del botón se rompa en varias líneas */
+    flex-shrink: 0; /* Evita que los botones se encojan en pantallas pequeñas */
 }
 
 .primary-cta {
@@ -565,14 +571,18 @@ body.nav-open .hamburger::after {
         margin-bottom: 2.5rem;
     }
     .hero-actions {
-        flex-direction: column;
-        gap: 1rem;
+        flex-direction: row; /* Asegura que estén en fila */
+        flex-wrap: nowrap; /* Evita que los botones se apilen */
+        justify-content: center; /* Centra los botones */
+        gap: 1rem; /* Reduce un poco el espacio entre ellos en móvil si es necesario */
     }
     .cta-button {
-        width: 80%;
-        max-width: 300px;
-        padding: 0.8rem 2rem;
-        font-size: 1rem;
+        width: auto; /* Permite que el ancho se ajuste al contenido, no un porcentaje fijo */
+        max-width: 150px; /* Limita un poco el ancho en pantallas muy pequeñas si es necesario */
+        padding: 0.8rem 1.5rem; /* Ajusta el padding para que no sean demasiado grandes */
+        font-size: 0.95rem; /* Ajusta el tamaño de la fuente si es necesario */
+        flex-grow: 1; /* Permite que los botones crezcan para llenar el espacio, si hay suficiente */
+        flex-shrink: 1; /* Permite que se encojan si no hay suficiente espacio, pero no tanto como para romper el texto */
     }
     .section {
         padding: 5rem 0 4rem;
@@ -614,5 +624,13 @@ body.nav-open .hamburger::after {
     .hero-content .lead-text {
         font-size: 0.95rem;
         margin-bottom: 2rem;
+    }
+    .hero-actions {
+        gap: 0.8rem; /* Un poco menos de espacio en pantallas muy pequeñas */
+    }
+    .cta-button {
+        max-width: 140px; /* Ajuste para pantallas aún más pequeñas */
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
     }
 }
