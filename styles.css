@@ -1,0 +1,618 @@
+/* Variables CSS con la nueva paleta de negros y neutros elegantes */
+:root {
+    --negro-principal: #121212; /* Negro muy oscuro y profundo */
+    --gris-oscuro: #252525; /* Gris oscuro para fondos de sección */
+    --acento-dorado: #D4AF37; /* Dorado brillante y elegante */
+    --crema-claro: #F5F5F5; /* Crema muy claro, casi blanco */
+    --texto-claro: #E0E0E0; /* Texto claro para fondos oscuros */
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'Roboto', sans-serif;
+}
+
+/* Base */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    line-height: 1.6;
+    color: var(--texto-claro);
+    background-color: var(--negro-principal);
+    overflow-x: hidden;
+}
+
+/* Contenedor principal */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+}
+
+/* Header y Navbar */
+.header {
+    background: rgba(18, 18, 18, 0.95); /* Negro principal con transparencia */
+    padding: 1rem 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.logo {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--crema-claro);
+    letter-spacing: 0.5px;
+}
+
+.logo span {
+    color: var(--acento-dorado);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--crema-claro);
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 1.05rem;
+    position: relative;
+    padding-bottom: 5px;
+    transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--acento-dorado);
+    transition: width 0.3s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+    width: 100%;
+}
+
+.nav-links a:hover {
+    color: var(--acento-dorado);
+}
+
+/* Nav Toggle (para móvil) */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.hamburger {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: var(--crema-claro);
+    position: relative;
+    transition: background 0.3s ease;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 3px;
+    background: var(--crema-claro);
+    position: absolute;
+    transition: transform 0.3s ease, top 0.3s ease;
+}
+
+.hamburger::before {
+    top: -8px;
+}
+
+.hamburger::after {
+    top: 8px;
+}
+
+/* Animación del hamburguesa */
+body.nav-open .hamburger {
+    background: transparent;
+}
+
+body.nav-open .hamburger::before {
+    transform: rotate(45deg);
+    top: 0;
+}
+
+body.nav-open .hamburger::after {
+    transform: rotate(-45deg);
+    top: 0;
+}
+
+/* --- SECCIÓN DE INICIO (HERO) --- */
+.hero {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* IMAGEN DE FONDO - Puedes cambiar esta URL por la tuya */
+    background: url('img/fondo.jpg') no-repeat center center/cover;
+    text-align: center;
+    color: var(--texto-claro);
+    overflow: hidden;
+}
+
+.hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(18, 18, 18, 0.65); /* Negro principal con opacidad */
+    backdrop-filter: blur(5px); /* Efecto de desenfoque difuminado */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 900px;
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.hero-content h2 {
+    font-family: var(--font-body);
+    font-weight: 300;
+    font-size: 1.8rem;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    color: var(--acento-dorado);
+    margin-bottom: 1rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-content .display-title {
+    font-family: var(--font-heading);
+    font-size: 5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    color: var(--crema-claro);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-content .lead-text {
+    font-size: 1.35rem;
+    font-weight: 300;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    max-width: 700px;
+    color: rgba(245, 245, 245, 0.9);
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+/* Botones CTA */
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    transition: all 0.35s cubic-bezier(0.2, 1, 0.3, 1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.primary-cta {
+    background: var(--acento-dorado);
+    color: var(--negro-principal);
+    border: 2px solid var(--acento-dorado);
+}
+
+.primary-cta:hover {
+    background: var(--negro-principal);
+    color: var(--acento-dorado);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.secondary-cta {
+    background: transparent;
+    color: var(--crema-claro);
+    border: 2px solid var(--crema-claro);
+}
+
+.secondary-cta:hover {
+    background: rgba(245, 245, 245, 0.1);
+    color: var(--acento-dorado);
+    border-color: var(--acento-dorado);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Animación de entrada para el Hero Content */
+.animate-hero-text {
+    animation: fadeInSlideUp 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- SECCIONES GENERALES --- */
+.section {
+    padding: 8rem 0 6rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    color: var(--texto-claro);
+    background-color: var(--gris-oscuro);
+}
+
+.section h2 {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    margin-bottom: 2rem;
+    color: var(--crema-claro);
+    position: relative;
+    display: inline-block;
+}
+
+.section h2::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 4px;
+    background-color: var(--acento-dorado);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.container {
+    padding: 0 1.5rem;
+}
+
+/* Animaciones de entrada (fade-in) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- SECCIÓN DE MENÚ (Rediseñada con nueva paleta) --- */
+.menu-section {
+    padding: 8rem 0;
+    background-color: var(--negro-principal);
+    color: var(--texto-claro);
+    overflow: hidden;
+}
+
+.menu-section h2 {
+    color: var(--crema-claro);
+}
+
+.menu-section h2::after {
+    background-color: var(--acento-dorado);
+}
+
+.menu-subtitle {
+    font-size: 1.25rem;
+    color: var(--texto-claro);
+    margin-top: -1rem;
+    margin-bottom: 3rem;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.menu-buttons-pro {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.menu-cta {
+    background-color: var(--gris-oscuro);
+    color: var(--crema-claro);
+    border: 2px solid var(--gris-oscuro);
+    box-shadow: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 25px;
+}
+
+.menu-cta:hover {
+    background-color: var(--acento-dorado);
+    color: var(--negro-principal);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.menu-whatsapp-cta {
+    background-color: var(--gris-oscuro);
+    color: var(--crema-claro);
+    border: 2px solid var(--gris-oscuro);
+    box-shadow: none;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 400;
+    border-radius: 25px;
+}
+
+.menu-whatsapp-cta:hover {
+    background-color: var(--acento-dorado);
+    color: var(--negro-principal);
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* --- SECCIÓN DE REDES (Rediseñada con nueva paleta) --- */
+.social-section {
+    background-color: var(--gris-oscuro);
+    color: var(--texto-claro);
+    padding: 8rem 0;
+    text-align: center;
+}
+
+.social-section h2, .social-section p {
+    color: var(--crema-claro);
+}
+
+.social-section h2 {
+    font-size: 2.5rem;
+}
+
+.social-section h2::after {
+    background-color: var(--acento-dorado);
+}
+
+.social-buttons-pro {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.social-circle-button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: rgba(212, 175, 55, 0.8); /* Dorado con transparencia */
+    color: var(--negro-principal);
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.social-circle-button:hover {
+    background: var(--acento-dorado);
+    color: var(--negro-principal);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* --- SECCIÓN DE UBICACIÓN --- */
+.location-section {
+    background-color: var(--negro-principal);
+    padding-bottom: 8rem;
+    color: var(--texto-claro);
+}
+
+.location-text {
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    line-height: 1.8;
+}
+
+.map-container {
+    overflow: hidden;
+    padding-bottom: 56.25%;
+    position: relative;
+    height: 0;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.map-container iframe {
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    border: none;
+}
+
+/* Footer */
+.footer {
+    background: var(--gris-oscuro);
+    color: var(--texto-claro);
+    text-align: center;
+    padding: 2.5rem 0;
+    font-size: 0.9rem;
+    border-top: 5px solid var(--acento-dorado);
+}
+
+.footer p {
+    margin-bottom: 0.5rem;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 992px) {
+    .hero-content .display-title {
+        font-size: 4rem;
+    }
+    .hero-content .lead-text {
+        font-size: 1.2rem;
+    }
+    .section h2 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 0 1rem;
+    }
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: var(--negro-principal);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 1rem 0;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+    }
+    body.nav-open .nav-links {
+        display: flex;
+        max-height: 300px;
+    }
+    .nav-links li {
+        margin: 0;
+        padding: 0.8rem 2rem;
+        text-align: center;
+    }
+    .nav-links a {
+        font-size: 1.1rem;
+        padding-bottom: 0;
+    }
+    .nav-links a::after {
+        display: none;
+    }
+    .nav-toggle {
+        display: block;
+        color: var(--crema-claro);
+    }
+    .hero-content h2 {
+        font-size: 1.4rem;
+    }
+    .hero-content .display-title {
+        font-size: 3rem;
+    }
+    .hero-content .lead-text {
+        font-size: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    .hero-actions {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    .cta-button {
+        width: 80%;
+        max-width: 300px;
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
+    }
+    .section {
+        padding: 5rem 0 4rem;
+    }
+    .section h2 {
+        font-size: 2rem;
+    }
+    .menu-buttons-pro {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+    }
+    .menu-cta, .menu-whatsapp-cta {
+        width: 80%;
+        max-width: 250px;
+        padding: 0.7rem 1.5rem;
+        font-size: 0.95rem;
+    }
+    .social-buttons-pro {
+        flex-direction: row;
+        gap: 1rem;
+    }
+    .social-circle-button {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h2 {
+        font-size: 1.2rem;
+        letter-spacing: 3px;
+    }
+    .hero-content .display-title {
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    .hero-content .lead-text {
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+    }
+}
