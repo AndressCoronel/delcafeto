@@ -1,10 +1,10 @@
 /* Variables CSS con la nueva paleta de negros y neutros elegantes */
 :root {
-    --negro-principal: #121212; /* Negro muy oscuro y profundo */
-    --gris-oscuro: #252525; /* Gris oscuro para fondos de sección */
-    --acento-dorado: #D4AF37; /* Dorado brillante y elegante */
-    --crema-claro: #F5F5F5; /* Crema muy claro, casi blanco */
-    --texto-claro: #E0E0E0; /* Texto claro para fondos oscuros */
+    --negro-principal: #121212;
+    --gris-oscuro: #252525;
+    --acento-dorado: #D4AF37;
+    --crema-claro: #F5F5F5;
+    --texto-claro: #E0E0E0;
 
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Roboto', sans-serif;
@@ -38,7 +38,7 @@ body {
 
 /* Header y Navbar */
 .header {
-    background: rgba(18, 18, 18, 0.95); /* Negro principal con transparencia */
+    background: rgba(18, 18, 18, 0.95);
     padding: 1rem 0;
     position: fixed;
     width: 100%;
@@ -178,8 +178,8 @@ body.nav-open .hamburger::after {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(18, 18, 18, 0.65); /* Negro principal con opacidad */
-    backdrop-filter: blur(5px); /* Efecto de desenfoque difuminado */
+    background-color: rgba(18, 18, 18, 0.65);
+    backdrop-filter: blur(5px);
     z-index: 1;
 }
 
@@ -230,13 +230,12 @@ body.nav-open .hamburger::after {
 
 .hero-actions {
     display: flex;
-    justify-content: center; /* Centra los botones horizontalmente */
+    justify-content: center;
     gap: 1.5rem;
     opacity: 0;
     transform: translateY(20px);
-    /* Nuevas propiedades para evitar que se apilen prematuramente */
-    flex-wrap: nowrap; /* Evita que los ítems se envuelvan a la siguiente línea */
-    max-width: 100%; /* Asegura que no exceda el ancho del contenedor padre */
+    flex-wrap: nowrap;
+    max-width: 100%;
 }
 
 /* Botones CTA */
@@ -253,8 +252,8 @@ body.nav-open .hamburger::after {
     position: relative;
     overflow: hidden;
     z-index: 1;
-    white-space: nowrap; /* Evita que el texto del botón se rompa en varias líneas */
-    flex-shrink: 0; /* Evita que los botones se encojan en pantallas pequeñas */
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .primary-cta {
@@ -387,6 +386,8 @@ body.nav-open .hamburger::after {
     font-size: 1rem;
     font-weight: 400;
     border-radius: 25px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .menu-cta:hover {
@@ -405,6 +406,8 @@ body.nav-open .hamburger::after {
     font-size: 1rem;
     font-weight: 400;
     border-radius: 25px;
+    flex-shrink: 0;
+    white-space: nowrap;
 }
 
 .menu-whatsapp-cta:hover {
@@ -449,7 +452,7 @@ body.nav-open .hamburger::after {
     width: 60px;
     height: 60px;
     border-radius: 50%;
-    background: rgba(212, 175, 55, 0.8); /* Dorado con transparencia */
+    background: rgba(212, 175, 55, 0.8);
     color: var(--negro-principal);
     font-size: 1.5rem;
     text-decoration: none;
@@ -509,19 +512,6 @@ body.nav-open .hamburger::after {
     margin-bottom: 0.5rem;
 }
 
-/* Media Queries para responsividad */
-@media (max-width: 992px) {
-    .hero-content .display-title {
-        font-size: 4rem;
-    }
-    .hero-content .lead-text {
-        font-size: 1.2rem;
-    }
-    .section h2 {
-        font-size: 2.5rem;
-    }
-}
-
 @media (max-width: 768px) {
     .navbar {
         padding: 0 1rem;
@@ -571,18 +561,18 @@ body.nav-open .hamburger::after {
         margin-bottom: 2.5rem;
     }
     .hero-actions {
-        flex-direction: row; /* Asegura que estén en fila */
-        flex-wrap: nowrap; /* Evita que los botones se apilen */
-        justify-content: center; /* Centra los botones */
-        gap: 1rem; /* Reduce un poco el espacio entre ellos en móvil si es necesario */
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: center;
+        gap: 1rem;
     }
     .cta-button {
-        width: auto; /* Permite que el ancho se ajuste al contenido, no un porcentaje fijo */
-        max-width: 150px; /* Limita un poco el ancho en pantallas muy pequeñas si es necesario */
-        padding: 0.8rem 1.5rem; /* Ajusta el padding para que no sean demasiado grandes */
-        font-size: 0.95rem; /* Ajusta el tamaño de la fuente si es necesario */
-        flex-grow: 1; /* Permite que los botones crezcan para llenar el espacio, si hay suficiente */
-        flex-shrink: 1; /* Permite que se encojan si no hay suficiente espacio, pero no tanto como para romper el texto */
+        width: auto;
+        max-width: 150px;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.95rem;
+        flex-grow: 1;
+        flex-shrink: 1;
     }
     .section {
         padding: 5rem 0 4rem;
@@ -591,15 +581,15 @@ body.nav-open .hamburger::after {
         font-size: 2rem;
     }
     .menu-buttons-pro {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.8rem;
+        flex-direction: column !important; /* APILA LOS BOTONES VERTICALMENTE */
+        align-items: center !important; /* CENTRA LOS BOTONES */
+        gap: 0.8rem !important; /* ESPACIO ENTRE BOTONES */
     }
     .menu-cta, .menu-whatsapp-cta {
-        width: 80%;
-        max-width: 250px;
-        padding: 0.7rem 1.5rem;
-        font-size: 0.95rem;
+        width: 80% !important; /* ANCHO DE LOS BOTONES */
+        max-width: 250px !important; /* ANCHO MÁXIMO PARA TABLETS */
+        padding: 0.7rem 1.5rem !important;
+        font-size: 0.95rem !important;
     }
     .social-buttons-pro {
         flex-direction: row;
@@ -609,28 +599,5 @@ body.nav-open .hamburger::after {
         width: 55px;
         height: 55px;
         font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero-content h2 {
-        font-size: 1.2rem;
-        letter-spacing: 3px;
-    }
-    .hero-content .display-title {
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-    }
-    .hero-content .lead-text {
-        font-size: 0.95rem;
-        margin-bottom: 2rem;
-    }
-    .hero-actions {
-        gap: 0.8rem; /* Un poco menos de espacio en pantallas muy pequeñas */
-    }
-    .cta-button {
-        max-width: 140px; /* Ajuste para pantallas aún más pequeñas */
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
     }
 }
